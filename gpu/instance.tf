@@ -1,9 +1,10 @@
 resource "google_compute_instance" "aaa_instance_bbb" {
-  name         = "${var.aaa_instance_bbb-name}-${count.index}"
-  count        = var.aaa_instance_bbb-count
-  machine_type = var.aaa_instance_bbb-type
-  zone         = var.aaa_instance_bbb-zones
-  tags         = var.aaa_instance_bbb-tags
+  name                      = "${var.aaa_instance_bbb-name}-${count.index}"
+  allow_stopping_for_update = true
+  count                     = var.aaa_instance_bbb-count
+  machine_type              = var.aaa_instance_bbb-type
+  zone                      = var.aaa_instance_bbb-zones
+  tags                      = var.aaa_instance_bbb-tags
 
   boot_disk {
     initialize_params {
