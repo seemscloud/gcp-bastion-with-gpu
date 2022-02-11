@@ -1,1 +1,0 @@
-# gcp-bastion-with-gpu
