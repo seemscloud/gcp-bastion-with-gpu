@@ -20,6 +20,10 @@ variable "aaa_instance_bbb-root_disk_size" {
   type = number
 }
 
+variable "aaa_instance_bbb-desired_status" {
+  type = string
+}
+
 variable "aaa_instance_bbb-type" {
   type = string
 }

@@ -5,6 +5,8 @@ resource "google_compute_instance" "aaa_instance_bbb" {
   machine_type              = var.aaa_instance_bbb-type
   zone                      = var.aaa_instance_bbb-zones
   tags                      = var.aaa_instance_bbb-tags
+  desired_status            = var.aaa_instance_bbb-desired_status
+
 
   boot_disk {
     initialize_params {

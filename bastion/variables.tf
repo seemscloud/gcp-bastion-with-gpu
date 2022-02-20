@@ -16,6 +16,10 @@ variable "aaa_instance_aaa-root_disk_size" {
   type = number
 }
 
+variable "aaa_instance_aaa-desired_status" {
+  type = string
+}
+
 variable "aaa_instance_aaa-type" {
   type = string
 }

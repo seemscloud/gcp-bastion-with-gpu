@@ -1,8 +1,9 @@
 resource "google_compute_instance" "aaa_instance_aaa" {
-  name         = var.aaa_instance_aaa-name
-  machine_type = var.aaa_instance_aaa-type
-  zone         = var.aaa_instance_aaa-zones
-  tags         = var.aaa_instance_aaa-tags
+  name           = var.aaa_instance_aaa-name
+  machine_type   = var.aaa_instance_aaa-type
+  zone           = var.aaa_instance_aaa-zones
+  tags           = var.aaa_instance_aaa-tags
+  desired_status = var.aaa_instance_aaa-desired_status
 
   boot_disk {
     initialize_params {
