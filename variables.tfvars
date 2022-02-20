@@ -15,7 +15,7 @@ aaa_network_aaa-name = "network"
 # Instance (Bastion)
 aaa_instance_aaa-name           = "bastion"
 aaa_instance_aaa-image          = "ubuntu-2004-lts"
-aaa_instance_aaa-root_disk_size = 100
+aaa_instance_aaa-root_disk_size = 10
 aaa_instance_aaa-desired_status = "RUNNING"
 aaa_instance_aaa-tags           = ["bastion", "all"]
 aaa_instance_aaa-region         = "us-central1"
@@ -27,7 +27,7 @@ aaa_instance_aaa-preemptible    = false
 # Instances (GPU)
 aaa_instance_bbb-name           = "gpu"
 aaa_instance_bbb-image          = "ubuntu-2004-lts"
-aaa_instance_bbb-root_disk_size = 50
+aaa_instance_bbb-root_disk_size = 100
 aaa_instance_bbb-count          = 1
 aaa_instance_bbb-desired_status = "RUNNING"
 aaa_instance_bbb-tags           = ["gpu", "all"]
