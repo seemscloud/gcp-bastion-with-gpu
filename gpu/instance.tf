@@ -12,6 +12,7 @@ resource "google_compute_instance" "aaa_instance_bbb" {
     initialize_params {
       image = var.aaa_instance_bbb-image
       size  = var.aaa_instance_bbb-root_disk_size
+      type  = var.aaa_instance_bbb-root_disk_type
     }
   }
 

@@ -38,6 +38,10 @@ variable "aaa_instance_aaa-root_disk_size" {
   type = number
 }
 
+variable "aaa_instance_aaa-root_disk_type" {
+  type = string
+}
+
 variable "aaa_instance_aaa-desired_status" {
   type = string
 }
@@ -77,6 +81,10 @@ variable "aaa_instance_bbb-image" {
 
 variable "aaa_instance_bbb-root_disk_size" {
   type = number
+}
+
+variable "aaa_instance_bbb-root_disk_type" {
+  type = string
 }
 
 variable "aaa_instance_bbb-desired_status" {
