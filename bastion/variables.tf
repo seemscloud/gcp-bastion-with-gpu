@@ -1,3 +1,7 @@
+variable "terraform_user" {
+  type = string
+}
+
 # Network
 variable "aaa_network_aaa-name" {
   type = string

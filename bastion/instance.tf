@@ -22,7 +22,20 @@ resource "google_compute_instance" "aaa_instance_aaa" {
     }
   }
   scheduling {
-    preemptible = var.aaa_instance_aaa-preemptible
+    preemptible       = var.aaa_instance_aaa-preemptible
     automatic_restart = var.aaa_instance_aaa-automatic_restart
+  }
+
+  connection {
+    type = "ssh"
+    user = var.terraform_user
+    host = var.aaa_instance_aaa-external_address
+    private_key = "${file("~/.ssh/id_rsa")}"
+  }
+
+  provisioner "remote-exec" {
+    inline = [
+      "touch /tmp/file",
+    ]
   }
 }

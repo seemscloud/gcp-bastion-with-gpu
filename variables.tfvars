@@ -23,8 +23,8 @@ aaa_instance_aaa-region            = "us-central1"
 aaa_instance_aaa-zones             = "us-central1-a"
 aaa_instance_aaa-cidr              = "10.100.255.0/24"
 aaa_instance_aaa-type              = "e2-highcpu-8"
-aaa_instance_aaa-preemptible       = true
-aaa_instance_aaa-automatic_restart = false
+aaa_instance_aaa-preemptible       = false
+aaa_instance_aaa-automatic_restart = true
 
 # Instances (GPU)
 aaa_instance_bbb-name              = "gpu"

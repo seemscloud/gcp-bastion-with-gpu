@@ -1,6 +1,8 @@
 module "bastion" {
   source = "./bastion"
 
+  terraform_user = var.terraform_user
+
   # Network
   aaa_network_aaa-name = module.networking.aaa_network_aaa-name
 
