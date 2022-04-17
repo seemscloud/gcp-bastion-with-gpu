@@ -27,13 +27,11 @@ resource "google_compute_instance" "aaa_instance_aaa" {
   }
 
   connection {
-    type = "ssh"
-    user = var.terraform_user
-    host = var.aaa_instance_aaa-external_address
+    type        = "ssh"
+    user        = var.terraform_user
+    host        = var.aaa_instance_aaa-external_address
     private_key = "${file("~/.ssh/id_rsa")}"
   }
-
-  # count = 0
 
   provisioner "remote-exec" {
     inline = [
@@ -43,7 +41,12 @@ resource "google_compute_instance" "aaa_instance_aaa" {
       "echo \"deb [arch=$(dpkg --print-architecture) signed-by=/usr/share/keyrings/docker-archive-keyring.gpg] https://download.docker.com/linux/ubuntu $(lsb_release -cs) stable\" | sudo -u root tee /etc/apt/sources.list.d/docker.list > /dev/null",
       "sudo -u root apt-get update",
       "sudo -u root apt-get install -y docker-ce docker-ce-cli containerd.io",
-      "sudo -u root find ~/ -mindepth 1 -maxdepth 1 -exec rm -rf {} \\;"
+      "sudo -u root find /root -mindepth 1 -maxdepth 1 -exec rm -rf {} \\;",
+      "sudo -u root git init /root",
+      "sudo -u root git --git-dir=/root/.git --work-tree=/root remote add origin https://github.com/theanotherwise/dotfiles.git",
+      "sudo -u root git --git-dir=/root/.git --work-tree=/root fetch --all",
+      "sudo -u root git --git-dir=/root/.git --work-tree=/root checkout linux",
+      "TMP_HOME=/root sudo -u root /bin/bash /root/.dotfiles/initialize.sh"
     ]
   }
 }
