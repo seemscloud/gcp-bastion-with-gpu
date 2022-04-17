@@ -43,3 +43,11 @@ variable "aaa_instance_bbb-tags" {
 variable "aaa_instance_bbb-subnet-name" {
   type = string
 }
+
+variable "aaa_instance_bbb-preemptible" {
+  type = bool
+}
+
+variable "aaa_instance_bbb-automatic_restart" {
+  type = bool
+}

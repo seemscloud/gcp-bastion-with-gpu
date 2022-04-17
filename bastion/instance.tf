@@ -21,4 +21,8 @@ resource "google_compute_instance" "aaa_instance_aaa" {
       nat_ip = var.aaa_instance_aaa-external_address
     }
   }
+  scheduling {
+    preemptible = var.aaa_instance_aaa-preemptible
+    automatic_restart = var.aaa_instance_aaa-automatic_restart
+  }
 }

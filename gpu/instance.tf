@@ -23,5 +23,6 @@ resource "google_compute_instance" "aaa_instance_bbb" {
 
   scheduling {
     on_host_maintenance = "TERMINATE"
+    preemptible = var.aaa_instance_bbb-preemptible
   }
 }

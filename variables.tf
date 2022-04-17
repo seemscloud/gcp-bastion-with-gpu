@@ -70,6 +70,10 @@ variable "aaa_instance_aaa-preemptible" {
   type = bool
 }
 
+variable "aaa_instance_aaa-automatic_restart" {
+  type = bool
+}
+
 # Instances (GPU)
 variable "aaa_instance_bbb-name" {
   type = string
@@ -117,4 +121,8 @@ variable "aaa_instance_bbb-type" {
 
 variable "aaa_instance_bbb-preemptible" {
   type = string
+}
+
+variable "aaa_instance_bbb-automatic_restart" {
+  type = bool
 }

@@ -43,3 +43,11 @@ variable "aaa_instance_aaa-external_address" {
 variable "aaa_instance_aaa-subnet-name" {
   type = string
 }
+
+variable "aaa_instance_aaa-preemptible" {
+  type = bool
+}
+
+variable "aaa_instance_aaa-automatic_restart" {
+  type = bool
+}

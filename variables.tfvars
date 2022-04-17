@@ -13,28 +13,30 @@ EndOfMessage
 aaa_network_aaa-name = "network"
 
 # Instance (Bastion)
-aaa_instance_aaa-name           = "bastion"
-aaa_instance_aaa-image          = "ubuntu-2004-lts"
-aaa_instance_aaa-root_disk_size = 10
-aaa_instance_aaa-root_disk_type = "pd-ssd"
-aaa_instance_aaa-desired_status = "TERMINATED"
-aaa_instance_aaa-tags           = ["bastion", "all"]
-aaa_instance_aaa-region         = "us-central1"
-aaa_instance_aaa-zones          = "us-central1-a"
-aaa_instance_aaa-cidr           = "10.100.255.0/24"
-aaa_instance_aaa-type           = "e2-highcpu-2"
-aaa_instance_aaa-preemptible    = false
+aaa_instance_aaa-name              = "bastion"
+aaa_instance_aaa-image             = "ubuntu-2004-lts"
+aaa_instance_aaa-root_disk_size    = 64
+aaa_instance_aaa-root_disk_type    = "pd-ssd"
+aaa_instance_aaa-desired_status    = "RUNNING"
+aaa_instance_aaa-tags              = ["bastion", "all"]
+aaa_instance_aaa-region            = "us-central1"
+aaa_instance_aaa-zones             = "us-central1-a"
+aaa_instance_aaa-cidr              = "10.100.255.0/24"
+aaa_instance_aaa-type              = "e2-highcpu-8"
+aaa_instance_aaa-preemptible       = true
+aaa_instance_aaa-automatic_restart = false
 
 # Instances (GPU)
-aaa_instance_bbb-name           = "gpu"
-aaa_instance_bbb-image          = "ubuntu-2004-lts"
-aaa_instance_bbb-root_disk_size = 25
-aaa_instance_bbb-root_disk_type = "pd-ssd"
-aaa_instance_bbb-count          = 1
-aaa_instance_bbb-desired_status = "TERMINATED"
-aaa_instance_bbb-tags           = ["gpu", "all"]
-aaa_instance_bbb-region         = "us-central1"
-aaa_instance_bbb-zones          = "us-central1-a"
-aaa_instance_bbb-cidr           = "10.100.1.0/24"
-aaa_instance_bbb-type           = "a2-highgpu-4g"
-aaa_instance_bbb-preemptible    = false
+aaa_instance_bbb-name              = "gpu"
+aaa_instance_bbb-image             = "ubuntu-2004-lts"
+aaa_instance_bbb-root_disk_size    = 25
+aaa_instance_bbb-root_disk_type    = "pd-ssd"
+aaa_instance_bbb-count             = 1
+aaa_instance_bbb-desired_status    = "RUNNING"
+aaa_instance_bbb-tags              = ["gpu", "all"]
+aaa_instance_bbb-region            = "us-central1"
+aaa_instance_bbb-zones             = "us-central1-a"
+aaa_instance_bbb-cidr              = "10.100.1.0/24"
+aaa_instance_bbb-type              = "a2-highgpu-4g"
+aaa_instance_bbb-preemptible       = false
+aaa_instance_bbb-automatic_restart = true
