@@ -36,7 +36,7 @@ resource "google_compute_instance" "aaa_instance_aaa" {
   provisioner "remote-exec" {
     inline = [
       "sudo -u root apt-get update",
-      "sudo -u root apt-get install -y ca-certificates curl gnupg lsb-release git",
+      "sudo -u root apt-get install -y ca-certificates curl gnupg lsb-release git python3-pip",
       "curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo -u root gpg --dearmor -o /usr/share/keyrings/docker-archive-keyring.gpg",
       "echo \"deb [arch=$(dpkg --print-architecture) signed-by=/usr/share/keyrings/docker-archive-keyring.gpg] https://download.docker.com/linux/ubuntu $(lsb_release -cs) stable\" | sudo -u root tee /etc/apt/sources.list.d/docker.list > /dev/null",
       "sudo -u root apt-get update",
@@ -46,7 +46,15 @@ resource "google_compute_instance" "aaa_instance_aaa" {
       "sudo -u root git --git-dir=/root/.git --work-tree=/root remote add origin https://github.com/theanotherwise/dotfiles.git",
       "sudo -u root git --git-dir=/root/.git --work-tree=/root fetch --all",
       "sudo -u root git --git-dir=/root/.git --work-tree=/root checkout linux",
-      "TMP_HOME=/root sudo -u root /bin/bash /root/.dotfiles/initialize.sh"
+      "TMP_HOME=/root sudo -u root /bin/bash /root/.dotfiles/initialize.sh",
+      "rm -f .bashrc",
+      "git init ~/",
+      "git remote add origin https://github.com/theanotherwise/dotfiles.git",
+      "git fetch --all",
+      "git checkout linux",
+      "/bin/bash ~/.dotfiles/initialize.sh",
+      "sudo -u root usermod -a -G docker terraform",
+      "sudo -u root pip3 install docker-compose"
     ]
   }
 }
