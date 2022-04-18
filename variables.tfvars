@@ -6,7 +6,7 @@ prefix     = "a"
 # Keys
 terraform_user        = "terraform"
 terraform_ssh_key_pub = <<EndOfMessage
-terraform:ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABgQCoip6WrI8ac9fV3M3zCQ6z11kkcSbXl72RZH9lvcUMrn6x069FHVkYxI9DvZT2M3bVSMVYdiABkhKpOCVCtaKYpfl47zKQwOpQsaIX+17HOUKFMAKNpFTIcItfQUU9YV/1xlnYLO96X/3NZ1fWiArEMCxWP0rQKq0rbfiZcwOs7vmMqUepQv5Hgn7Ug4r2NkQMcIQHWeEmY0zKIVb7nYU09YrT7gMt1w0CMlI1ZLcW2w++GT9wNByFRXCxccVOx+JUkMDYEKCvlcsJU8sjaI3K0+VNYrfnArKIMaErGk5TitSnZ0rJ64yggnIh0w30nTq+MPN3DSMsytVKreL2MK44UxSMZBsOYlEJCVmGOYesiQaAgxDRoma4jcQxVZrDYdSH33S7v9LDaJXWnsp5+g6SZ0/TQnwuyynhgDdArzH5ABw88YKmvwSt11elvpXxGnud9dX69X6byUuoxpLKS4usuYQVhZAZ025to0LOlkL6HHhcazVv8PhQXmCDvQDNJ0s=
+terraform:ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABgQC8YirW0OKPLjIlpGAdzM9kKb5rUcq/kOjSMRUYiaTgw0Hb5vWNZ5QQHpgXf1RGaAyD1jBhFe4ppzY//HiPKjXByqXTYzVy7ghhUUCuzNDOp8ykHQ3OBWeOMLUBvRCk+yMdlgo+gAs19/WNYZNz6YEWD1yqbXZ2eYUQHpoUqAxLnOtrIOCDiaqEKLCmKwUmpt+dcla6iy7abnYjI/0AgyL7fHgI26yH0EmygFpvmWvM2SOnFx9Ivoe7ypd786gUF5fTHjI5Z7SQGUgZjuQ5IvNibdklK822eRefqzblDTCGXh1b0jGMP+InDHlaTniczuAkbV0LhGaKDssrsooQbZFY3u3La30E6Zz3rlAJ7HIhXxy6dIz+oUpVHCEYHzTegWwEbAti9KhLYVTA4m3WiyLLGlzgXY7j8DL5gwge8R33zjVunQ96l22Cg9DJiElMStrEsUpdfxd5qEqQpmnY2WnQ7XR1DMgSQRuaKizv3o0WTpgqO4lJBSz2mE4ttZwLw98=
 EndOfMessage
 
 # Network
@@ -25,6 +25,26 @@ aaa_instance_aaa-cidr              = "10.100.255.0/24"
 aaa_instance_aaa-type              = "e2-highcpu-8"
 aaa_instance_aaa-preemptible       = false
 aaa_instance_aaa-automatic_restart = true
+aaa_instance_aaa-remote-exec       = [
+  "sudo -u root apt-get update",
+  "sudo -u root apt-get install -y ca-certificates curl gnupg lsb-release git python3-pip unzip",
+  "curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo -u root gpg --dearmor -o /usr/share/keyrings/docker-archive-keyring.gpg",
+  "echo \"deb [arch=$(dpkg --print-architecture) signed-by=/usr/share/keyrings/docker-archive-keyring.gpg] https://download.docker.com/linux/ubuntu $(lsb_release -cs) stable\" | sudo -u root tee /etc/apt/sources.list.d/docker.list > /dev/null",
+  "sudo -u root apt-get update",
+  "sudo -u root apt-get install -y docker-ce docker-ce-cli containerd.io",
+  "sudo -u root find /root -mindepth 1 -maxdepth 1 -exec rm -rf {} \\;",
+  "sudo -u root git init /root",
+  "sudo -u root git --git-dir=/root/.git --work-tree=/root remote add origin https://github.com/theanotherwise/dotfiles.git",
+  "sudo -u root git --git-dir=/root/.git --work-tree=/root fetch --all",
+  "sudo -u root git --git-dir=/root/.git --work-tree=/root checkout linux",
+  "rm -f .bashrc",
+  "git init ~/",
+  "git remote add origin https://github.com/theanotherwise/dotfiles.git",
+  "git fetch --all",
+  "git checkout linux",
+  "sudo -u root usermod -a -G docker terraform",
+  "sudo -u root pip3 install docker-compose"
+]
 
 # Instances (GPU)
 aaa_instance_bbb-name              = "gpu"

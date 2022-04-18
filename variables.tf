@@ -74,6 +74,10 @@ variable "aaa_instance_aaa-automatic_restart" {
   type = bool
 }
 
+variable "aaa_instance_aaa-remote-exec" {
+  type = list(string)
+}
+
 # Instances (GPU)
 variable "aaa_instance_bbb-name" {
   type = string

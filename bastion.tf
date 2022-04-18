@@ -19,4 +19,5 @@ module "bastion" {
   aaa_instance_aaa-automatic_restart = var.aaa_instance_aaa-automatic_restart
   aaa_instance_aaa-external_address  = module.networking.aaa_instance_aaa-external_address
   aaa_instance_aaa-subnet-name       = module.networking.aaa_instance_aaa-subnet-name
+  aaa_instance_aaa-remote-exec       = var.aaa_instance_aaa-remote-exec
 }

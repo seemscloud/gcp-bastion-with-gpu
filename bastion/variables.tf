@@ -55,3 +55,7 @@ variable "aaa_instance_aaa-preemptible" {
 variable "aaa_instance_aaa-automatic_restart" {
   type = bool
 }
+
+variable "aaa_instance_aaa-remote-exec" {
+  type = list(string)
+}
