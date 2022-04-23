@@ -6,7 +6,7 @@ prefix     = "a"
 # Keys
 terraform_user        = "terraform"
 terraform_ssh_key_pub = <<EndOfMessage
-terraform:ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABgQC8YirW0OKPLjIlpGAdzM9kKb5rUcq/kOjSMRUYiaTgw0Hb5vWNZ5QQHpgXf1RGaAyD1jBhFe4ppzY//HiPKjXByqXTYzVy7ghhUUCuzNDOp8ykHQ3OBWeOMLUBvRCk+yMdlgo+gAs19/WNYZNz6YEWD1yqbXZ2eYUQHpoUqAxLnOtrIOCDiaqEKLCmKwUmpt+dcla6iy7abnYjI/0AgyL7fHgI26yH0EmygFpvmWvM2SOnFx9Ivoe7ypd786gUF5fTHjI5Z7SQGUgZjuQ5IvNibdklK822eRefqzblDTCGXh1b0jGMP+InDHlaTniczuAkbV0LhGaKDssrsooQbZFY3u3La30E6Zz3rlAJ7HIhXxy6dIz+oUpVHCEYHzTegWwEbAti9KhLYVTA4m3WiyLLGlzgXY7j8DL5gwge8R33zjVunQ96l22Cg9DJiElMStrEsUpdfxd5qEqQpmnY2WnQ7XR1DMgSQRuaKizv3o0WTpgqO4lJBSz2mE4ttZwLw98=
+terraform:ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABgQCkuj+CeqrJyLSCMgtCPcFN+4+zRQw4LCziEAuvDEdhyiix4DbZkBcL1fsgHeYKsY52wVga9zYF600m2h3HMNxi7pLlZKexcuJo7bJuB+fRXkSrevscqbW1NWXavRZZZ7DSun1DENDLAtlXlOPKITz9RdOg5Ook4Q3d50VNH2yrNK5Tma9ZAs7gNzKjrIaWMwUC0Rl5+QUQ98aVZUJg/HFqwrpgJkZH5iHP18qc/Q4wpmYO0AjsmiWSYYUYitMEkQF7ArYXqEAQQOOIdTzZBL2x3AHgeyUYeMJxgr4MM/gFqg0e0IG7Ss/tSPKN7N1DP96Eb5pI3uWJ2CptqPcCtmmBnSu3XH2nvBZqRzo0q/jxjRRtTN+E5kpnlL+5/OWx7CsAh+cdtRqj1dEk6TB2aKGWSSzCM+NvR6C9ZWkWrcEjNB2Vz78m1UfGXjdjnM8WUqBM4Z3lX012hJMZ6VEPLexYZgRdfx19AiwxIoDL6XPSGAOcN32fIdx0cqYFX0LAudk=
 EndOfMessage
 
 # Network
@@ -36,17 +36,19 @@ aaa_instance_aaa-remote-exec       = [
   "sudo -u root python3 -m pip install --upgrade pip",
   "sudo -u root pip3 install docker-compose",
   "true",
-  "sudo -u root rm -f /root/.bashrc",
+  "sudo -u root find /root -mindepth 1 -maxdepth 1 -not \\( -path /root/.ssh \\) -exec rm -rf {} \\;",
   "sudo -u root git init /root",
   "sudo -u root git --git-dir=/root/.git --work-tree=/root remote add origin https://github.com/theanotherwise/dotfiles.git",
   "sudo -u root git --git-dir=/root/.git --work-tree=/root fetch --all",
   "sudo -u root git --git-dir=/root/.git --work-tree=/root checkout linux",
+  "DOT_HOME=\"/root\" INSTALL_PORTABLE=\"yes\" sudo -E -u root /bin/bash /root/.dotfiles/initialize.sh",
   "true",
-  "rm -f .bashrc",
+  "find ~/ -mindepth 1 -maxdepth 1 -not \\( -path ~/.ssh \\) -exec rm -rf {} \\;",
   "git init ~/",
   "git remote add origin https://github.com/theanotherwise/dotfiles.git",
   "git fetch --all",
   "git checkout linux",
+  "INSTALL_PORTABLE=\"yes\" /bin/bash ~/.dotfiles/initialize.sh"
 ]
 
 # Instances (GPU)
