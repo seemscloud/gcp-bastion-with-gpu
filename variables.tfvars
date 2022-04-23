@@ -14,7 +14,7 @@ aaa_network_aaa-name = "network"
 
 # Instance (Bastion)
 aaa_instance_aaa-name              = "bastion"
-aaa_instance_aaa-image             = "ubuntu-2204-lts"
+aaa_instance_aaa-image             = "ubuntu-2004-lts"
 aaa_instance_aaa-root_disk_size    = 64
 aaa_instance_aaa-root_disk_type    = "pd-ssd"
 aaa_instance_aaa-desired_status    = "RUNNING"
