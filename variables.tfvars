@@ -14,7 +14,7 @@ aaa_network_aaa-name = "network"
 
 # Instance (Bastion)
 aaa_instance_aaa-name              = "bastion"
-aaa_instance_aaa-image             = "ubuntu-2004-lts"
+aaa_instance_aaa-image             = "ubuntu-2204-lts"
 aaa_instance_aaa-root_disk_size    = 64
 aaa_instance_aaa-root_disk_type    = "pd-ssd"
 aaa_instance_aaa-desired_status    = "RUNNING"
@@ -35,14 +35,13 @@ aaa_instance_aaa-remote-exec       = [
   "sudo -u root usermod -a -G docker terraform",
   "sudo -u root python3 -m pip install --upgrade pip",
   "sudo -u root pip3 install docker-compose",
-  "true",
+  "sudo -u root apt-get autoremove --purge snapd -y",
   "sudo -u root find /root -mindepth 1 -maxdepth 1 -not \\( -path /root/.ssh \\) -exec rm -rf {} \\;",
   "sudo -u root git init /root",
   "sudo -u root git --git-dir=/root/.git --work-tree=/root remote add origin https://github.com/theanotherwise/dotfiles.git",
   "sudo -u root git --git-dir=/root/.git --work-tree=/root fetch --all",
   "sudo -u root git --git-dir=/root/.git --work-tree=/root checkout linux",
   "DOT_HOME=\"/root\" INSTALL_PORTABLE=\"yes\" sudo -E -u root /bin/bash /root/.dotfiles/initialize.sh",
-  "true",
   "find ~/ -mindepth 1 -maxdepth 1 -not \\( -path ~/.ssh \\) -exec rm -rf {} \\;",
   "git init ~/",
   "git remote add origin https://github.com/theanotherwise/dotfiles.git",
