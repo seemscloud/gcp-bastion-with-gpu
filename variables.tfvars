@@ -22,12 +22,14 @@ aaa_instance_aaa-tags              = ["bastion", "all"]
 aaa_instance_aaa-region            = "europe-central2"
 aaa_instance_aaa-zones             = "europe-central2-a"
 aaa_instance_aaa-cidr              = "10.100.255.0/24"
-aaa_instance_aaa-type              = "c2d-highcpu-32"
+aaa_instance_aaa-type              = "e2-standard-32"
 aaa_instance_aaa-preemptible       = false
 aaa_instance_aaa-automatic_restart = true
 aaa_instance_aaa-remote-exec       = [
   "sudo -u root apt-get update",
-  "sudo -u root apt-get install -y ca-certificates curl gnupg lsb-release git python3-pip unzip"
+  "sudo -u root apt-get install -y ca-certificates curl gnupg lsb-release git python3-pip unzip",
+  "sudo -u root apt-get upgrade -y",
+  "sudo -u root apt-get dist-upgrade -y"
 ]
 
 # Instances (GPU)
