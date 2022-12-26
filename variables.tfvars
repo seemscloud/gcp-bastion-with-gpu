@@ -1,12 +1,12 @@
 # Configuration
 project_id = "core-337701"
-region     = "us-central1"
+region     = "europe-central2"
 prefix     = "a"
 
 # Keys
 terraform_user        = "terraform"
 terraform_ssh_key_pub = <<EndOfMessage
-terraform:ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABgQCkuj+CeqrJyLSCMgtCPcFN+4+zRQw4LCziEAuvDEdhyiix4DbZkBcL1fsgHeYKsY52wVga9zYF600m2h3HMNxi7pLlZKexcuJo7bJuB+fRXkSrevscqbW1NWXavRZZZ7DSun1DENDLAtlXlOPKITz9RdOg5Ook4Q3d50VNH2yrNK5Tma9ZAs7gNzKjrIaWMwUC0Rl5+QUQ98aVZUJg/HFqwrpgJkZH5iHP18qc/Q4wpmYO0AjsmiWSYYUYitMEkQF7ArYXqEAQQOOIdTzZBL2x3AHgeyUYeMJxgr4MM/gFqg0e0IG7Ss/tSPKN7N1DP96Eb5pI3uWJ2CptqPcCtmmBnSu3XH2nvBZqRzo0q/jxjRRtTN+E5kpnlL+5/OWx7CsAh+cdtRqj1dEk6TB2aKGWSSzCM+NvR6C9ZWkWrcEjNB2Vz78m1UfGXjdjnM8WUqBM4Z3lX012hJMZ6VEPLexYZgRdfx19AiwxIoDL6XPSGAOcN32fIdx0cqYFX0LAudk=
+terraform:ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABgQCxMR6x6rHclUBQI3IQVPZN8xjkAVVAZmS1PV/hNg/XPc5sl5fI7/3FLmwu+A9PDuiPu5++60Ns4NtYJcd+hVQ9m/htl6DGPeUoflin1pmVFSfKMUctTRWsl+e2ldt3CVmTgFclLABdLDR+cSb3jSqNXgonzjNcWbTfhrsSnqNuD+2GxXpGZXc4rYDloSrlGVOx0mEiyJrMocJFuVlh1JB8Os0KNnx5qD56h5zIRLGkhHhgXIO5kJ+hNB+vF3FV2Fq9Ar47+DrQiD/o9/h17HFDvD0tzze1GLYAJs4QcFJJPKdWM1kHyXa/p9TIFLc3rVnCrVx1NihgaEhiY+d452otV0p1Bq1tvotfPJ92BDSNlF7A1YuJNYqRkNNpwSPMznPQtVkeRCHTNH5MmMqhPptGEPLiDlkMUZeFFjTKz0IDo6QCX05WBl+SXYLo1l2R9jCoKstmoKvlsFY6fcYpSYj78X9E4bIX++LSLiG9oGXwg2xoZTlwofhqjnI+xc9tMiU=
 EndOfMessage
 
 # Network
@@ -19,10 +19,10 @@ aaa_instance_aaa-root_disk_size    = 64
 aaa_instance_aaa-root_disk_type    = "pd-ssd"
 aaa_instance_aaa-desired_status    = "RUNNING"
 aaa_instance_aaa-tags              = ["bastion", "all"]
-aaa_instance_aaa-region            = "us-central1"
-aaa_instance_aaa-zones             = "us-central1-a"
+aaa_instance_aaa-region            = "europe-central2"
+aaa_instance_aaa-zones             = "europe-central2-a"
 aaa_instance_aaa-cidr              = "10.100.255.0/24"
-aaa_instance_aaa-type              = "e2-standard-32"
+aaa_instance_aaa-type              = "c2d-highcpu-32"
 aaa_instance_aaa-preemptible       = false
 aaa_instance_aaa-automatic_restart = true
 aaa_instance_aaa-remote-exec       = [
@@ -38,8 +38,8 @@ aaa_instance_bbb-root_disk_type    = "pd-ssd"
 aaa_instance_bbb-count             = 0
 aaa_instance_bbb-desired_status    = "RUNNING"
 aaa_instance_bbb-tags              = ["gpu", "all"]
-aaa_instance_bbb-region            = "us-central1"
-aaa_instance_bbb-zones             = "us-central1-a"
+aaa_instance_bbb-region            = "europe-central2"
+aaa_instance_bbb-zones             = "europe-central2-a"
 aaa_instance_bbb-cidr              = "10.100.1.0/24"
 aaa_instance_bbb-type              = "a2-highgpu-1g"
 aaa_instance_bbb-preemptible       = false
