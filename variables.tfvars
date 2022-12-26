@@ -22,32 +22,12 @@ aaa_instance_aaa-tags              = ["bastion", "all"]
 aaa_instance_aaa-region            = "us-central1"
 aaa_instance_aaa-zones             = "us-central1-a"
 aaa_instance_aaa-cidr              = "10.100.255.0/24"
-aaa_instance_aaa-type              = "e2-highcpu-8"
+aaa_instance_aaa-type              = "e2-standard-32"
 aaa_instance_aaa-preemptible       = false
 aaa_instance_aaa-automatic_restart = true
 aaa_instance_aaa-remote-exec       = [
   "sudo -u root apt-get update",
-  "sudo -u root apt-get install -y ca-certificates curl gnupg lsb-release git python3-pip unzip",
-  "curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo -u root gpg --dearmor -o /usr/share/keyrings/docker-archive-keyring.gpg",
-  "echo \"deb [arch=$(dpkg --print-architecture) signed-by=/usr/share/keyrings/docker-archive-keyring.gpg] https://download.docker.com/linux/ubuntu $(lsb_release -cs) stable\" | sudo -u root tee /etc/apt/sources.list.d/docker.list > /dev/null",
-  "sudo -u root apt-get update",
-  "sudo -u root apt-get install -y docker-ce docker-ce-cli containerd.io",
-  "sudo -u root usermod -a -G docker terraform",
-  "sudo -u root python3 -m pip install --upgrade pip",
-  "sudo -u root pip3 install docker-compose",
-  "sudo -u root apt-get autoremove --purge snapd -y",
-  "sudo -u root find /root -mindepth 1 -maxdepth 1 -not \\( -path /root/.ssh \\) -exec rm -rf {} \\;",
-  "sudo -u root git init /root",
-  "sudo -u root git --git-dir=/root/.git --work-tree=/root remote add origin https://github.com/theanotherwise/dotfiles.git",
-  "sudo -u root git --git-dir=/root/.git --work-tree=/root fetch --all",
-  "sudo -u root git --git-dir=/root/.git --work-tree=/root checkout linux",
-  "DOT_HOME=\"/root\" INSTALL_PORTABLE=\"yes\" sudo -E -u root /bin/bash /root/.dotfiles/initialize.sh",
-  "find ~/ -mindepth 1 -maxdepth 1 -not \\( -path ~/.ssh \\) -exec rm -rf {} \\;",
-  "git init ~/",
-  "git remote add origin https://github.com/theanotherwise/dotfiles.git",
-  "git fetch --all",
-  "git checkout linux",
-  "INSTALL_PORTABLE=\"yes\" /bin/bash ~/.dotfiles/initialize.sh"
+  "sudo -u root apt-get install -y ca-certificates curl gnupg lsb-release git python3-pip unzip"
 ]
 
 # Instances (GPU)
